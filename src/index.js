@@ -259,6 +259,7 @@ app.post('/api/data/users/signup', (request, response) => {
 const key = Buffer.from(process.env.ENCRYPTION_KEY, 'hex') // import encryption key as hex and transform to binary
 const iv = Buffer.from(process.env.ENCRYPTION_IV, 'hex')
 
+
 // encrypt password
 const encryptPassword = (pswrd) => {
   const cipher = crypto.createCipheriv('aes-256-cbc', key, iv)
