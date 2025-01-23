@@ -49,7 +49,9 @@ app.post('/api/data/subjects', (request, response) => {
     credits: newSubject.credits,
     todos: newSubject.todos,
     exams: newSubject.exams,
-    userId: userId
+    userId: userId,
+    passed: newSubject.passed,
+    grade: newSubject.grade
   })
 
   subject.save()
@@ -81,8 +83,10 @@ app.put('/api/data/subjects/:id', (request, response) => {
   const title = request.body.title
   const todos = request.body.todos
   const exams = request.body.exams
+  const passed = request.body.passed
+  const grade = request.body.grade
 
-  Subject.findByIdAndUpdate(request.params.id, {title, todos, exams}, { new: true, runValidators: true, context: 'query'})
+  Subject.findByIdAndUpdate(request.params.id, {title, todos, exams, passed, grade}, { new: true, runValidators: true, context: 'query'})
     .then(updatedSubject => {
       console.log('Updated Subject with new data: ' + updatedSubject)
       response.json(updatedSubject)

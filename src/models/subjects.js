@@ -35,6 +35,14 @@ const subjectSchema = new mongoose.Schema({
     userId: {
         type: String,
         required: true
+    },
+    passed: {
+        type: Boolean,
+        required: true
+    },
+    grade: {
+        type: Number,
+        required: true
     }
 })
 
