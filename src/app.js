@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 const app = express()
-app.use(express.static(__dirname + '/public')) // frontend build
+app.use(express.static('../dist')) // frontend build
 app.use(express.json()) // middleware for parsing incoming requests
 app.use(cors())
 
