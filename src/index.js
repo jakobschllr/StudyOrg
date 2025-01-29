@@ -93,7 +93,7 @@ app.put('/api/data/subjects/:id', (request, response) => {
     })
     .catch(error => {
       console.log(error)
-      response.status(400).send({ error: "Subect couldn't be updated - check parameters" })
+      response.status(400).send({ error: "Subject couldn't be updated - check parameters" })
     })
 })
 
@@ -150,7 +150,7 @@ app.post('/api/data/habits', (request, response) => {
   const userId = request.body.userId
   const habit = new Habit({
     name: newHabit.name,
-    nextDate: newHabit.nextDate,
+    date: newHabit.date,
     userId: userId
   })
   habit.save()
@@ -180,12 +180,12 @@ app.delete('/api/data/habits/:id', (request, response) => {
 // check habit as done
 app.put('/api/data/habits/:id', (request, response) => {
   
-  const { name, nextDate } = request.body.habit
+  const { name, date } = request.body.habit
   const userId = request.body.userId
   const scoreId = request.body.score.id
   const score = request.body.score.score
 
-  Habit.findByIdAndUpdate(request.params.id, {name, nextDate}, {new: true, runValidators: true, context: 'query'})
+  Habit.findByIdAndUpdate(request.params.id, {name, date}, {new: true, runValidators: true, context: 'query'})
     .then(updatedHabit => {
       Score.findByIdAndUpdate(scoreId, {score}, {new: true, runValidators: true, context: 'query'})
         .then(resp => {

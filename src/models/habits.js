@@ -20,7 +20,7 @@ const habitSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    nextDate: {
+    date: {
         type: String,
         required: true
     },
